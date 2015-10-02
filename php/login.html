@@ -1,0 +1,283 @@
+
+
+
+	<div class="login-layout" style="z-index:500;">
+		<div class="main-container">
+			<div class="main-content">
+				<div class="row">
+					<div class="col-sm-10 col-sm-offset-1">
+						<div class="login-container">
+							
+
+							<div class="position-relative">
+								<div id="login-box" class="login-box dark-orange widget-box no-border">
+								<p  style="position:absolute;top:3px;right:10px;cursor:pointer;" onclick="hide_box(); return false;" > x </p>
+									<div class="widget-body">
+										<div class="widget-main">
+											<h4 class="header dark-orange lighter bigger">
+												<i class="icon-user"></i>
+												Si ya tienes una cuenta:
+											</h4>
+
+											<div class="space-6"></div>
+
+											<form method="post" action="ingresar.php">
+												<fieldset>
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="email" name="correo" class="form-control" placeholder="Correo" maxlength="50" required data-rel="tooltip" data-placement="bottom" data-original-title="Tu correo registrado en Oggun" <?php if(isset($_GET['correo'])){$correo=$_GET['correo'];echo("value='$correo'");}?>/>
+															<i class="icon-envelope"></i>
+														</span>
+													</label>
+
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="password" name="clave" class="form-control" placeholder="Contraseña" maxlength="50" data-rel="tooltip" data-placement="bottom" data-original-title="Tu clave en Oggun" required />
+															<i class="icon-lock"></i>
+														</span>
+													</label>
+
+													<div class="space"></div>
+
+													<div class="clearfix">
+														
+
+														<button type="submit" class="width-35 pull-right btn btn-sm btn-warning">
+															<i class="icon-key"></i>
+															Ingresar
+														</button>
+															
+													</div>
+
+													<div class="space-4"></div>
+												</fieldset>
+											</form>
+
+											
+										</div><!-- /widget-main -->
+
+										<div class="toolbar clearfix">
+										<!--	<div>
+												<a href="#" onclick="show_box('forgot-box'); return false;" class="dark-orange">
+													<i class="icon-arrow-left"></i>
+													Olvidé mi clave
+												</a>
+											</div> -->
+
+											<div>
+												<a href="#" onclick="show_box('signup-box'); return false;" class="dark-orange">
+													No tengo cuenta
+													<i class="icon-arrow-right"></i>
+												</a>
+											</div>
+										</div>
+									</div><!-- /widget-body -->
+								</div><!-- /login-box -->
+
+								<div id="forgot-box" class="forgot-box dark-orange widget-box no-border">
+								<p  style="position:absolute;top:3px;right:10px;cursor:pointer;" onclick="hide_box(); return false;" > x </p>
+									<div class="widget-body">
+										<div class="widget-main">
+											<h4 class="header dark-orange lighter bigger">
+												<i class="icon-key"></i>
+												Recuperar Contraseña
+											</h4>
+
+											<div class="space-6"></div>
+											<p>
+												Ingresa tu correo para recibir instrucciones
+											</p>
+
+											<form>
+												<fieldset>
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="email" class="form-control" placeholder="Contraseña" maxlength="50" data-rel="tooltip" data-placement="bottom" data-original-title="Tu correo registrado en Oggun" required />
+															<i class="icon-envelope"></i>
+														</span>
+													</label>
+
+													<div class="clearfix">
+														<button type="button" class="width-35 pull-right btn btn-sm btn-warning">
+															<i class="icon-lightbulb"></i>
+															Enviar
+														</button>
+													</div>
+												</fieldset>
+											</form>
+										</div><!-- /widget-main -->
+
+										<div class="toolbar center">
+											<a href="#" onclick="show_box('login-box'); return false;" class="dark-orange">
+												Regresar a ingreso
+												<i class="icon-arrow-right"></i>
+											</a>
+										</div>
+									</div><!-- /widget-body -->
+								</div><!-- /forgot-box -->
+
+								<div id="signup-box" class="signup-box widget-box  no-border">
+								<p  style="position:absolute;top:3px;right:10px;cursor:pointer;" onclick="hide_box(); return false;" > x </p>
+									<div class="widget-body">
+										<div class="widget-main">
+											<h4 class="header dark-orange lighter bigger">
+												<i class="icon-group "></i>
+												Crear nuevo usuario
+											</h4>
+											
+											
+
+
+											<div class="space-6"></div>
+											<p class="dark-orange"> Comienza por seleccionar tu perfil: </p>
+
+											<form method="post" action="crear.php">
+												<fieldset>
+												
+												<input  type="radio" class="ace"  name="perfil" value="1" id="perfil1" <?php if(isset($_GET['perfil'])){if($_GET['perfil']==1){echo('checked');}
+				}?> required="required"/>
+                <label data-rel="tooltip" data-placement="bottom" data-original-title="Si tienes un título profesional" for="perfil1" class="lbl"  onclick="profesional()">Profesional</label>
+            
+            <input type="radio" class="ace" name="perfil" value="2" id="perfil2"<?php if(isset($_GET['perfil'])){if($_GET['perfil']==2){echo('checked');}
+				}?>/>
+                <label data-rel="tooltip" data-placement="bottom" data-original-title="Si tienes un título técnico o tecnológico" for="perfil2" class="lbl" onclick="tecnico()">Técnico</label>
+            
+            <input type="radio" class="ace" name="perfil" value="3" id="perfil3"<?php if(isset($_GET['perfil'])){if($_GET['perfil']==3){echo('checked');}
+				}?>/>
+                <label data-rel="tooltip" data-placement="bottom" data-original-title="Si te desempeñas en un arte o talento. Ej: Pintor o Bailarín" for="perfil3" class="lbl" onclick="talento()">Talento</label>
+            
+            <input type="radio" class="ace" name="perfil" value="4"  id="perfil4" <?php if(isset($_GET['perfil'])){if($_GET['perfil']==4){echo('checked');}
+				}?> />
+                <label data-rel="tooltip" data-placement="bottom" data-original-title="Si ejerces un oficio. Ej: Jardinero, Carpintero, Plomero, etc." for="perfil4" class="lbl" onclick="oficio()">Oficio</label>
+				<input type="radio" class="ace" name="perfil" value="5"  id="perfil5" <?php if(isset($_GET['perfil'])){if($_GET['perfil']==5){echo('checked');}
+				}?> />
+                <label data-rel="tooltip" data-placement="bottom" data-original-title="Toda aquella profesión independiente que no esté incluida en las anteriores, Ej: Empresario, Estudiante, Comerciante, Emprendedor, etc." for="perfil5" class="lbl" onclick="ocupacion()">Ocupación</label>
+				<div class="space-24"></div>
+				<p class="dark-orange"> Ahora necesitamos saber algo básico de ti: </p>
+												
+												<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input data-rel="tooltip" data-placement="bottom" data-original-title="Nombres sin apellidos" type="text" class="form-control" placeholder="Nombres" name="nombres" maxlength="50" <?php if(isset($_GET['nombres'])){$nombres=str_replace('.', ' ', $_GET['nombres']);echo("value='$nombres'");}?>required />
+															<i class="icon-user"></i>
+														</span>
+													</label>
+													
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input data-rel="tooltip" data-placement="bottom" data-original-title="Tus Apellidos" type="text" class="form-control" placeholder="Apellidos" name="apellidos" maxlength="50" <?php if(isset($_GET['apellidos'])){$apellidos=str_replace('.', ' ', $_GET['apellidos']);echo("value='$apellidos'");}?>required />
+															<i class="icon-group"></i>
+														</span>
+													</label>
+													
+													<input type="radio" class="ace" name="sexo" value="0" id="femenino" <?php if(isset($_GET['sexo'])){if($_GET['sexo']==0){echo('checked');}
+				}?> required="required"/>
+                <label class="lbl" for="femenino">Femenino</label>
+            
+            
+            <input type="radio" class="ace" name="sexo" value="1" id="masculino"<?php if(isset($_GET['sexo'])){if($_GET['sexo']==1){echo('checked');}
+				}?>/>
+                <label class="lbl" for="masculino">Masculino</label>
+
+				
+				
+								<div class="space-6"></div>
+				<p class="dark-orange"> Finalmente un correo y contraseña para ingresar nuevamente: </p>
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input data-rel="tooltip" data-placement="bottom" data-original-title="Un correo que uses" type="email" class="form-control" placeholder="Correo" name="correo" maxlength="50" <?php if(isset($_GET['correo'])){$correo=$_GET['correo'];echo("value='$correo'");}?> required />
+															<i class="icon-envelope"></i>
+														</span>
+													</label>
+
+													
+													
+													            
+
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input data-rel="tooltip" data-placement="bottom" data-original-title="Clave para Oggun" type="password" class="form-control" placeholder="Contraseña" name="clave" maxlength="50" required />
+															<i class="icon-lock"></i>
+														</span>
+													</label>
+
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input data-rel="tooltip" data-placement="bottom" data-original-title="Repite la clave, por seguridad" type="password" class="form-control" placeholder="Repetir Contraseña" name="claverep" maxlength="50" required/>
+															<i class="icon-retweet"></i>
+														</span>
+													</label>
+
+
+
+													<div class="space-24"></div>
+
+													<div class="clearfix">
+														
+
+														<button type="submit" class="width-65 pull-right btn btn-sm btn-warning">
+															Registrar
+															<i class="icon-arrow-right icon-on-right"></i>
+														</button>
+													</div>
+												</fieldset>
+											</form>
+										</div>
+
+										<div class="toolbar center">
+											<a href="#" onclick="show_box('login-box'); return false;" class="dark-orange">
+												<i class="icon-arrow-left"></i>
+												Ya tengo una cuenta
+											</a>
+										</div>
+									</div><!-- /widget-body -->
+								</div><!-- /signup-box -->
+							</div><!-- /position-relative -->
+						</div>
+					</div><!-- /.col -->
+				</div><!-- /.row -->
+			</div>
+		</div><!-- /.main-container -->
+
+		<!-- basic scripts -->
+
+		<!--[if !IE]> -->
+
+		<script type="text/javascript">
+			window.jQuery || document.write("<script src='../assets/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+		</script>
+
+		<!-- <![endif]-->
+
+		<!--[if IE]>
+<script type="text/javascript">
+ window.jQuery || document.write("<script src='../assets/js/jquery-1.10.2.min.js'>"+"<"+"/script>");
+</script>
+<![endif]-->
+
+		<script type="text/javascript">
+			if("ontouchend" in document) document.write("<script src='../assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+		</script>
+
+		<!-- inline scripts related to this page -->
+
+		<script src="../assets/js/chosen.jquery.min.js"></script>
+		
+
+		<script type="text/javascript">
+		jQuery(function($) {
+		$('[data-rel=tooltip]').tooltip({container:'body'});
+		});
+		
+			function show_box(id) {
+			 jQuery('.widget-box.visible').removeClass('visible');
+			 jQuery('#'+id).addClass('visible');
+			}
+			function hide_box() {
+			 jQuery('.widget-box.visible').removeClass('visible');
+			}
+			
+			
+
+
+		</script>
+	</div>
